@@ -126,21 +126,15 @@ body {
   }
 
 .logo {
-    width: 76px;
-    height: 76px;
-    margin: 0 auto 12px;
-    display: block;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 10px 28px #225f5718;
-  }
-
-.logo img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 14px;
+    display: grid;
+    place-items: center;
+    border-radius: 19px;
+    background: linear-gradient(145deg, #fff, #e8f5ef);
+    border: 1px solid #fff;
+    box-shadow: 0 10px 28px #225f5710, inset 0 0 0 1px #107b7806;
   }
 
 h1 {
@@ -262,7 +256,7 @@ footer {
 @media (max-height: 740px) {
     .splash { padding-top: 24px; padding-bottom: 64px; }
     .scene { width: min(305px, 85%); margin-top: 12px; }
-    .logo { width: 56px; height: 56px; margin-bottom: 10px; }
+    .logo { width: 48px; height: 48px; margin-bottom: 10px; }
     .loading { margin-top: 24px; }
     .divider { margin: 15px auto; }
   }
@@ -311,7 +305,14 @@ footer {
           <feGaussianBlur stdDeviation="9"/>
         </filter>
 
-<!-- The International Youth Development emblem is loaded as a local asset below. -->
+<!-- Original lotus-inspired brand mark -->
+        <g id="lotus" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 35C13 27 15 16 24 9C33 16 35 27 24 35Z"/>
+          <path d="M24 35C12 36 6 27 7 19C17 19 23 25 24 35Z"/>
+          <path d="M24 35C36 36 42 27 41 19C31 19 25 25 24 35Z"/>
+          <path d="M14 39Q24 43 34 39"/>
+        </g>
       </defs>
 
 <g class="ground">
@@ -393,8 +394,10 @@ footer {
 
 <!-- Rooftop logo sign -->
         <g class="roof-logo">
-          <image href="logo.svg" x="203" y="87" width="43" height="43"
-                 preserveAspectRatio="none"/>
+          <path d="M204 95L244 86V123L204 132Z" fill="#127d76"/>
+          <g transform="translate(206 91) scale(.73)" color="#ffffff">
+            <use href="#lotus"/>
+          </g>
         </g>
       </g>
 
@@ -419,7 +422,10 @@ footer {
 
 <section class="brand" aria-label="Hospital identity">
     <div class="logo" aria-hidden="true">
-      <img src="logo.svg" alt="">
+      <svg width="44" height="44" viewBox="0 0 48 48"
+           style="color: #107b78">
+        <use href="#lotus"/>
+      </svg>
     </div>
     <h1>Ma Shakti</h1>
     <p class="hospital-label">Hospital</p>

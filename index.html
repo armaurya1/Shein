@@ -137,6 +137,13 @@ body {
     box-shadow: 0 10px 28px #225f5710, inset 0 0 0 1px #107b7806;
   }
 
+.logo img {
+    width: 46px;
+    height: 46px;
+    display: block;
+    object-fit: contain;
+  }
+
 h1 {
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
@@ -305,14 +312,7 @@ footer {
           <feGaussianBlur stdDeviation="9"/>
         </filter>
 
-<!-- Original lotus-inspired brand mark -->
-        <g id="lotus" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M24 35C13 27 15 16 24 9C33 16 35 27 24 35Z"/>
-          <path d="M24 35C12 36 6 27 7 19C17 19 23 25 24 35Z"/>
-          <path d="M24 35C36 36 42 27 41 19C31 19 25 25 24 35Z"/>
-          <path d="M14 39Q24 43 34 39"/>
-        </g>
+<!-- Uploaded International Youth Development logo is used as an image asset. -->
       </defs>
 
 <g class="ground">
@@ -395,9 +395,8 @@ footer {
 <!-- Rooftop logo sign -->
         <g class="roof-logo">
           <path d="M204 95L244 86V123L204 132Z" fill="#127d76"/>
-          <g transform="translate(206 91) scale(.73)" color="#ffffff">
-            <use href="#lotus"/>
-          </g>
+          <image href="1000373128.svg" x="207" y="91" width="35" height="34"
+                 preserveAspectRatio="xMidYMid meet"/>
         </g>
       </g>
 
@@ -422,10 +421,7 @@ footer {
 
 <section class="brand" aria-label="Hospital identity">
     <div class="logo" aria-hidden="true">
-      <svg width="44" height="44" viewBox="0 0 48 48"
-           style="color: #107b78">
-        <use href="#lotus"/>
-      </svg>
+      <img src="1000373128.svg" alt="">
     </div>
     <h1>Ma Shakti</h1>
     <p class="hospital-label">Hospital</p>

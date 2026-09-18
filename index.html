@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#edf7f5">
+<title>Maa Shakti Hospital</title>
+<style>
+  :root {
+    --teal: #107b78;
+    --deep: #163e46;
+    --muted: #72898c;
+    --gold: #c6a363;
+  }
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--deep);
+    background: #edf7f5;
+  }
+
+.splash {
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 86px;
+    background:
+      radial-gradient(ellipse at 50% 33%, #fff 0%, #f5fbfa 35%, transparent 70%),
+      linear-gradient(155deg, #e6f4f0, #f8fbf8 65%, #e2efef);
+  }
+
+.ambient {
+    position: absolute;
+    z-index: -1;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    filter: blur(65px);
+    background: #bce4d9;
+    opacity: .3;
+    top: -220px;
+    right: -220px;
+    animation: breathe 7s ease-in-out infinite alternate;
+  }
+
+.ambient.second {
+    background: #e9dbbd;
+    top: auto;
+    right: auto;
+    left: -250px;
+    bottom: -240px;
+    animation-delay: -3s;
+  }
+
+.eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--teal);
+    animation: appear 1s both;
+  }
+
+.scene {
+    width: min(420px, 100%);
+    margin: 24px 0 8px;
+    position: relative;
+  }
+
+.scene::before {
+    content: "";
+    position: absolute;
+    width: 75%;
+    aspect-ratio: 1;
+    border: 1px solid #167e7810;
+    border-radius: 50%;
+    left: 12.5%;
+    top: 0;
+    box-shadow: 0 0 0 24px #ffffff45, 0 0 0 25px #167e7808;
+    animation: appear 1.8s both;
+  }
+
+.hospital {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+    position: relative;
+  }
+
+.ground {
+    transform-origin: 210px 301px;
+    animation: ground-in 1.3s ease both;
+  }
+
+.building {
+    animation: build-in 1.6s cubic-bezier(.2,.75,.2,1) .2s both;
+  }
+
+.landscape {
+    animation: appear 1s ease 1s both;
+  }
+
+.windows {
+    animation: windows-on 1.4s ease 1.15s both;
+  }
+
+.roof-logo {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: logo-in .8s cubic-bezier(.2,.8,.2,1.3) 1.3s both;
+  }
+
+.brand {
+    text-align: center;
+    animation: text-in 1s ease .8s both;
+  }
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 14px;
+    display: grid;
+    place-items: center;
+    border-radius: 19px;
+    background: linear-gradient(145deg, #fff, #e8f5ef);
+    border: 1px solid #fff;
+    box-shadow: 0 10px 28px #225f5710, inset 0 0 0 1px #107b7806;
+  }
+
+.logo img {
+    width: 46px;
+    height: 46px;
+    display: block;
+    object-fit: contain;
+  }
+
+h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 8vw, 43px);
+    font-weight: 400;
+    letter-spacing: .025em;
+    line-height: 1.2;
+  }
+
+.hospital-label {
+    margin: 10px 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .45em;
+    padding-left: .45em;
+    color: var(--teal);
+  }
+
+.divider {
+    width: 34px;
+    height: 1px;
+    margin: 21px auto 17px;
+    background: var(--gold);
+  }
+
+.tagline {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: .025em;
+  }
+
+.loading {
+    margin-top: 34px;
+    width: 130px;
+    text-align: center;
+    animation: appear 1s ease 1.3s both;
+  }
+
+.track {
+    height: 3px;
+    border-radius: 10px;
+    background: #dceae5;
+    overflow: hidden;
+  }
+
+.track::after {
+    content: "";
+    display: block;
+    width: 45%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #8dc4ad, var(--teal));
+    animation: loading 1.8s ease-in-out infinite;
+  }
+
+.status {
+    margin-top: 13px;
+    font-size: 10px;
+    letter-spacing: .13em;
+    color: #79918e;
+  }
+
+footer {
+    position: absolute;
+    bottom: max(25px, env(safe-area-inset-bottom));
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    color: #879c99;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    animation: appear 1.4s ease 1.5s both;
+  }
+
+@keyframes appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+@keyframes text-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+@keyframes ground-in {
+    from { opacity: 0; transform: scale(.6); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+@keyframes build-in {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+@keyframes windows-on {
+    from { opacity: .15; }
+    to { opacity: 1; }
+  }
+
+@keyframes logo-in {
+    from { opacity: 0; transform: scale(.65); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+@keyframes breathe {
+    to { transform: translate(-25px, 40px) scale(1.15); }
+  }
+
+@keyframes loading {
+    from { transform: translateX(-110%); }
+    to { transform: translateX(330%); }
+  }
+
+@media (max-height: 740px) {
+    .splash { padding-top: 24px; padding-bottom: 64px; }
+    .scene { width: min(305px, 85%); margin-top: 12px; }
+    .logo { width: 48px; height: 48px; margin-bottom: 10px; }
+    .loading { margin-top: 24px; }
+    .divider { margin: 15px auto; }
+  }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+    }
+    .track::after { width: 100%; opacity: .5; }
+  }
+</style>
+</head>
+<body>
+<main class="splash" aria-label="Maa Shakti Hospital splash screen">
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="ambient second" aria-hidden="true"></div>
+
+<div class="eyebrow">A warmer welcome to wellness</div>
+
+<div class="scene">
+    <svg class="hospital" viewBox="0 0 420 345"
+         role="img" aria-labelledby="building-title">
+      <title id="building-title">
+        Illustrated modern Maa Shakti Hospital with landscaped entrance
+      </title>
+
+<defs>
+        <linearGradient id="front" x2=".2" y2="1">
+          <stop stop-color="#ffffff"/>
+          <stop offset="1" stop-color="#e7eeea"/>
+        </linearGradient>
+        <linearGradient id="side" x2="1" y2="1">
+          <stop stop-color="#bed3cc"/>
+          <stop offset="1" stop-color="#99b6ad"/>
+        </linearGradient>
+        <linearGradient id="glass" x2="1" y2="1">
+          <stop stop-color="#a5d6d0"/>
+          <stop offset=".5" stop-color="#73aea9"/>
+          <stop offset="1" stop-color="#3c8181"/>
+        </linearGradient>
+        <linearGradient id="door" x2="1" y2="1">
+          <stop stop-color="#387d7b"/>
+          <stop offset="1" stop-color="#174c53"/>
+        </linearGradient>
+        <filter id="shadow" x="-50%" y="-100%" width="200%" height="300%">
+          <feGaussianBlur stdDeviation="9"/>
+        </filter>
+        <filter id="white-logo" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix"
+            values="0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 1 0"/>
+        </filter>
+
+<!-- Uploaded International Youth Development logo is used as an image asset. -->
+      </defs>
+
+<g class="ground">
+        <ellipse cx="216" cy="302" rx="139" ry="18"
+                 fill="#40675c" opacity=".13" filter="url(#shadow)"/>
+        <path d="M48 281L224 251L371 290L195 327Z" fill="#d2e4db"/>
+        <path d="M48 281L195 319L371 282V290L195 327L48 289Z"
+              fill="#bfd6ca"/>
+        <path d="M163 300L205 288L267 307L226 317Z" fill="#f5f4e9"/>
+      </g>
+
+<g class="building">
+        <!-- Right wing -->
+        <path d="M260 166L326 185V280L260 262Z" fill="url(#side)"/>
+        <path d="M227 176L290 193V289L227 272Z" fill="#cfdfd7"/>
+        <path d="M290 193L326 185V280L290 289Z" fill="#a9c5ba"/>
+        <path d="M227 176L262 168L326 185L290 193Z" fill="#f9fcf9"/>
+
+<!-- Left wing -->
+        <path d="M87 179L145 165L184 176V273L126 288L87 276Z"
+              fill="url(#front)"/>
+        <path d="M87 179L126 190V288L87 276Z" fill="#b9d0c5"/>
+        <path d="M87 179L145 165L184 176L126 190Z" fill="#ffffff"/>
+
+<!-- Main tower -->
+        <path d="M145 111L245 91L286 112V265L186 291L145 270Z"
+              fill="url(#front)"/>
+        <path d="M245 91L286 112V265L245 249Z" fill="url(#side)"/>
+        <path d="M145 111L245 91L286 112L186 135Z" fill="#ffffff"/>
+        <path d="M145 111L186 135V291L145 270Z" fill="#c4d9cf"/>
+        <path d="M186 135L286 112V265L186 291Z" fill="url(#front)"/>
+
+<!-- Rooftop architectural trim -->
+        <path d="M141 106L244 85L290 109L186 133Z" fill="#fff"/>
+        <path d="M186 133L290 109V117L186 141Z" fill="#dfebe4"/>
+        <path d="M141 106L186 133V141L141 114Z" fill="#afc8bb"/>
+
+<!-- Glass -->
+        <g class="windows" fill="url(#glass)">
+          <path d="M198 157L219 152V176L198 181Z"/>
+          <path d="M230 149L251 144V168L230 173Z"/>
+          <path d="M262 142L277 138V162L262 166Z"/>
+
+<path d="M198 191L219 186V210L198 215Z"/>
+          <path d="M230 183L251 178V202L230 207Z"/>
+          <path d="M262 176L277 172V196L262 200Z"/>
+
+<path d="M154 145L176 158V181L154 169Z"/>
+          <path d="M154 181L176 194V217L154 204Z"/>
+
+<path d="M98 201L117 206V225L98 220Z"/>
+          <path d="M98 234L117 239V258L98 253Z"/>
+          <path d="M133 202L143 199V221L133 224Z"/>
+          <path d="M133 237L143 234V256L133 259Z"/>
+
+<path d="M298 207L317 202V222L298 227Z"/>
+          <path d="M298 241L317 236V256L298 261Z"/>
+        </g>
+
+<!-- Window reflections -->
+        <g stroke="#fff" stroke-opacity=".35" stroke-width="2">
+          <path d="M202 160L214 172M234 152L246 164M202 194L214 206"/>
+          <path d="M157 151L172 173"/>
+        </g>
+
+<!-- Entrance glazing -->
+        <path d="M217 239L253 230V274L217 283Z" fill="url(#door)"/>
+        <path d="M235 235V278" stroke="#acd3c5" stroke-width="1.5"/>
+        <path d="M230 258V265M240 255V262"
+              stroke="#d2e7de" stroke-width="2" stroke-linecap="round"/>
+
+<!-- Entrance canopy -->
+        <path d="M204 237L254 224L270 234L220 248Z" fill="#2c9690"/>
+        <path d="M220 248L270 234V240L220 254Z" fill="#166c6a"/>
+        <path d="M204 237L220 248V254L204 243Z" fill="#4bada0"/>
+        <path d="M220 254V282M265 242V270"
+              stroke="#d5dfd5" stroke-width="3"/>
+        <path d="M209 287L259 274L270 278L220 292Z" fill="#fff"/>
+
+<!-- Rooftop logo sign -->
+        <g class="roof-logo">
+          <path d="M204 95L244 86V123L204 132Z" fill="#127d76"/>
+          <image href="1000373128.svg" x="207" y="91" width="35" height="34"
+                 preserveAspectRatio="xMidYMid meet" filter="url(#white-logo)"/>
+        </g>
+      </g>
+
+<g class="landscape">
+        <!-- Sculpted trees -->
+        <path d="M74 267V293M335 275V298"
+              stroke="#9aab8c" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="74" cy="260" rx="16" ry="24" fill="#8ab39b"/>
+        <ellipse cx="69" cy="255" rx="10" ry="18" fill="#acd0ae"/>
+        <ellipse cx="335" cy="266" rx="16" ry="23" fill="#77a68c"/>
+        <ellipse cx="330" cy="261" rx="10" ry="17" fill="#a4c5a5"/>
+
+<!-- Low planting -->
+        <path d="M109 291L143 282L159 286L125 296Z" fill="#87b49b"/>
+        <path d="M283 292L310 286L323 290L295 297Z" fill="#8ebba1"/>
+        <circle cx="123" cy="287" r="5" fill="#b0ceaa"/>
+        <circle cx="136" cy="284" r="6" fill="#a0c39d"/>
+        <circle cx="298" cy="288" r="5" fill="#b6cea6"/>
+      </g>
+    </svg>
+  </div>
+
+<section class="brand" aria-label="Hospital identity">
+    <div class="logo" aria-hidden="true">
+      <img src="1000373128.svg" alt="">
+    </div>
+    <h1>Maa Shakti</h1>
+    <p class="hospital-label">Hospital</p>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="tagline">Compassion. Care. Confidence.</p>
+  </section>
+
+<div class="loading" role="status">
+    <div class="track" aria-hidden="true"></div>
+    <div class="status">Preparing your experience</div>
+  </div>
+
+<footer>Dedicated to your wellbeing</footer>
+</main>
+</body>
+</html>

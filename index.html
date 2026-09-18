@@ -311,6 +311,13 @@ footer {
         <filter id="shadow" x="-50%" y="-100%" width="200%" height="300%">
           <feGaussianBlur stdDeviation="9"/>
         </filter>
+        <filter id="white-logo" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix"
+            values="0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 1 0"/>
+        </filter>
 
 <!-- Uploaded International Youth Development logo is used as an image asset. -->
       </defs>
@@ -396,7 +403,7 @@ footer {
         <g class="roof-logo">
           <path d="M204 95L244 86V123L204 132Z" fill="#127d76"/>
           <image href="1000373128.svg" x="207" y="91" width="35" height="34"
-                 preserveAspectRatio="xMidYMid meet"/>
+                 preserveAspectRatio="xMidYMid meet" filter="url(#white-logo)"/>
         </g>
       </g>
 
